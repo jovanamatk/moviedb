@@ -45,16 +45,22 @@
 }
 
 .card {
-  height: 300px;
+  height: 350px;
   background-color: antiquewhite;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1rem;
+  grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  margin: auto;
+  text-align: center;
 }
-
+@media (min-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
 // GLOBAL
 
 .h-75 {

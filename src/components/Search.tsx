@@ -7,7 +7,7 @@ interface Props {
 export const Search: React.FC<Props> = () => {
         return(
         <div className="search">
-            <img className="search-icon" src={searchIcon} />
+            <img alt="Search icon" className="search-icon" src={searchIcon} />
             <input className="search-input" placeholder="Search" type="text" />
         </div>  
         );

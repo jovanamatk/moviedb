@@ -51,16 +51,25 @@
 }
 
 .card {
-  height: 300px;
+  height: 350px;
   background-color: antiquewhite;
 }
 
 .grid-container {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  grid-gap: 1rem;
+  -ms-grid-columns: 1fr;
+      grid-template-columns: 1fr;
+  grid-gap: 2rem;
+  margin: auto;
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .grid-container {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
 }
 
 .h-75 {
