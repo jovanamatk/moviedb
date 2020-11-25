@@ -6,9 +6,9 @@ interface Props {
 }
 
 export const Navbar: React.FC<Props> = () => {
-        return( <>
-            <NavLink to="/tv-shows">TV Shows</NavLink>
-            <NavLink to="/movies">Movies</NavLink>
-            </>
+        return( <div className="navbar">
+            <NavLink className="navbar--item" to="/movies">Movies</NavLink>
+            <NavLink className="navbar--item" to="/tv-shows">TV Shows</NavLink>
+            </div>
         );
 }

@@ -8,7 +8,7 @@ import { Search } from './components/Search';
 
 function App() {
   return (
-    <>
+    <div className="container">
     <Navbar/>
     <Search/>
     <Switch>
@@ -18,7 +18,7 @@ function App() {
       <Redirect to="/"/>
     </Switch>
 
-    </>
+    </div>
   );
 }
 
