@@ -44,8 +44,9 @@ useEffect(() => {
 
   const history = useHistory();
   const location = useLocation();
+
   let hideHeader = () => {
-    if (location.pathname.startsWith('/movies/'))
+    if (location.pathname.startsWith('/movies/') || location.pathname.startsWith('/tv-shows/'))
     return true;          
   }
 
@@ -63,11 +64,11 @@ useEffect(() => {
     <Switch>
       <Route path="/movies/:id" component={Item} />
       <Route path="/movies" component={Movies} />
+      <Route path="/tv-shows/:id" component={Item} />
       <Route path="/tv-shows" component={TvShows} />
       <Redirect from="/" to="/tv-shows"/>
       <Redirect to="/"/>
     </Switch>
-
     </div>
     </AppContext.Provider>
   );

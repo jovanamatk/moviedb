@@ -8,12 +8,12 @@ interface Props {
 }
 
 export const Card: React.FC<Props> = ({name,data}) => {
-
+        let route_name = data.title ? 'movies' : 'tv-shows';
         return(
             <div className="card">
                 <div className="h-75"></div>
                 <div className="h-25"><Link to={{
-                    pathname:`/movies/${data.id}`,
+                    pathname:`/${route_name}/${data.id}`,
                     state:{
                         data: {data}
                     }
@@ -27,10 +27,12 @@ export const Card: React.FC<Props> = ({name,data}) => {
 
 TO DO LIST
 
+- Create movie/tv show pages and link them to the cards         -> DONE
+- Back button                                                   -> DONE
 - Put images from API into cards
-- Create movie/tv show pages and link them to the cards
-- Back button
-- Make the search work
+- Make the search work                                          -> done incorrectly, gotta do it again
+- Complete styling the app
+
 - Learn about TS - fix everything that's required 
 - Learn about ESLint and Enzyme
 - Write some comments about the code
