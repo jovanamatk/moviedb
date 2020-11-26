@@ -12,7 +12,7 @@ export const TvShows: React.FC<Props> = () => {
 
         return(
             <div className="grid-container">
-                { tvShows.length != 0 ? tvShows.map(movie => <Card key={movie['id']} name={movie['name']} / >)  : <h1>Movie not found.</h1>}
+                { tvShows.length !== 0 ? tvShows.map(movie => <Card data={movie} key={movie['id']} name={movie['name']} / >)  : <h1>Movie not found.</h1>}
 
             </div>
         );

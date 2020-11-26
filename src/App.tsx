@@ -6,8 +6,9 @@ import { Movies } from './components/Movies';
 import { Navbar } from './components/Navbar';
 import { Search } from './components/Search';
 import Axios from 'axios';
+import { Item } from './components/common/Item';
 
-export const AppContext = React.createContext({ movies: [] as Movies[], tvShows: [] });
+export const AppContext = React.createContext({ movies: [] as Movies[], tvShows: [] as TvShows[]});
 
 interface Movies {
   title:string
@@ -47,8 +48,9 @@ useEffect(() => {
     <Navbar/>
     <Search value={search} onChange={handleSearch}/>
     <Switch>
-      <Route path="/tv-shows" exact component={TvShows} />
-      <Route path="/movies" exact component={Movies} />
+      <Route path="/movies/:id" component={Item} />
+      <Route path="/movies" component={Movies} />
+      <Route path="/tv-shows" component={TvShows} />
       <Redirect from="/" to="/tv-shows"/>
       <Redirect to="/"/>
     </Switch>

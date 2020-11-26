@@ -1,15 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import {Link} from 'react-router-dom'
+import { AppContext } from '../../App';
 
 interface Props {
-    name:any
+    name:any,
+    data:any
 }
 
-export const Card: React.FC<Props> = ({name}) => {
-    
+export const Card: React.FC<Props> = ({name,data}) => {
+
         return(
             <div className="card">
                 <div className="h-75"></div>
-                <div className="h-25"><h2>{name}</h2></div>
+                <div className="h-25"><Link to={{
+                    pathname:`/movies/${data.id}`,
+                    state:{
+                        data: {data}
+                    }
+                }}
+                ><h2>{name}</h2></Link></div>
             </div>
         );
 }
