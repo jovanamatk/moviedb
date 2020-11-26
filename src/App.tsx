@@ -7,6 +7,7 @@ import { Navbar } from './components/Navbar';
 import { Search } from './components/Search';
 import Axios from 'axios';
 import { Item } from './components/common/Item';
+import { useHistory, useLocation } from 'react-router';
 
 export const AppContext = React.createContext({ movies: [] as Movies[], tvShows: [] as TvShows[]});
 
@@ -41,12 +42,24 @@ useEffect(() => {
     return filtered;
   }
 
+  const history = useHistory();
+  const location = useLocation();
+  let hideHeader = () => {
+    if (location.pathname.startsWith('/movies/'))
+    return true;          
+  }
+
   return (
     <AppContext.Provider value={getData(movies, 'title') ? {movies:getData(movies, 'title'), tvShows:getData(tvShows, 'name')} : {movies: movies,tvShows:tvShows }}>
 
     <div className="container">
-    <Navbar/>
-    <Search value={search} onChange={handleSearch}/>
+      {
+      hideHeader() 
+      ? 
+      <button onClick={() => history.goBack()}><h2>Back</h2></button> 
+      : 
+      <><Navbar/> <Search value={search} onChange={handleSearch}/></> 
+      }
     <Switch>
       <Route path="/movies/:id" component={Item} />
       <Route path="/movies" component={Movies} />
