@@ -9,7 +9,7 @@ import Axios from 'axios';
 import { Item } from './components/common/Item';
 import { useHistory, useLocation } from 'react-router';
 
-export const AppContext = React.createContext({ movies: [] as Movies[], tvShows: [] as TvShows[]});
+export const AppContext = React.createContext({ movies: [] as Movies[], tvShows: [] as TvShows[] });
 
 interface Movies {
   title:string
@@ -29,8 +29,13 @@ useEffect(() => {
   Axios.get('https://api.themoviedb.org/3/tv/popular?api_key=810f591d016b0a00f63dda22f0ca7d52').then(response => setTvShows(response.data.results.slice(0,10) as TvShows[]))
 }, []);
 
-  let handleSearch = query => {
+  let handleSearch = (query:string) => {
     setSearch(query);
+  }
+
+  let getImages = (image) => {
+    const URLPREFIX = "https://image.tmdb.org/t/p/original";
+    return (URLPREFIX+image);
   }
 
   let getData = (data:any, parameter:string) => {
