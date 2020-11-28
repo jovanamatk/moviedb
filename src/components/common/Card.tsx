@@ -13,15 +13,20 @@ export const Card: React.FC<Props> = ({data}) => {
         return(
             <div className="card">
                 <div className="h-75">
-                    <LazyLoadImage src={image_url+data['backdrop_path']} alt={data.name}/>
+                <Link to={{
+                    pathname:`/${route_name}/${data.id}`,
+                    state:{
+                        data: {data}
+                    }}}>
+                    <LazyLoadImage src={image_url+data['backdrop_path']} alt={data.name}/></Link>
                 </div>
-                <div className="h-25"><Link to={{
+                <div className="h-25">
+                <h2><Link to={{
                     pathname:`/${route_name}/${data.id}`,
                     state:{
                         data: {data}
                     }
-                }}
-                ><h2>{data.name ? data.name : data.title}</h2></Link></div>
+                }}>{data.name ? data.name : data.title}</Link></h2></div>
             </div>
         );
 }

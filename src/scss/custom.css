@@ -53,10 +53,13 @@
 .card {
   height: 350px;
   width: 100%;
-  background-color: antiquewhite;
+  border: 1px solid black;
+  border-radius: 10px;
 }
 
 .card img {
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
@@ -80,11 +83,32 @@
   }
 }
 
+button {
+  padding: 0 40px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+button :hover {
+  color: grey;
+}
+
 .cover-img {
   width: 100%;
   height: 60vh;
   -o-object-fit: cover;
      object-fit: cover;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+a :hover {
+  color: grey;
 }
 
 .h-75 {
