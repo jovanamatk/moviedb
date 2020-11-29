@@ -12,7 +12,9 @@ A small projects that demonstrates the usage of The Movie Database API.
 
 ### Installation
 
-Extract the archive, open the folder that contains the extracted content in the command line/terminal and run the following command
+- Extract the archive
+- Open the folder that contains the extracted content in the command line/terminal
+- Run the following command
 
 ```
 npm install
