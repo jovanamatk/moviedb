@@ -8,20 +8,31 @@ A small projects that demonstrates the usage of The Movie Database API.
 
 ### Dependencies
 
-- NPM
+- [NodeJS (NPM)](https://nodejs.org/en/)
 
-### Installing
+### Installation
+
+Extract the archive, open the folder that contains the extracted content in the command line/terminal and run the following command
 
 ```
 npm install
 ```
 
-### Executing program
+### Execution
+
+After the installation of required dependencies completes, run
 
 ```
 npm start
 ```
 
-## Authors
+or make a build
+
+```
+npm run build
+npx serve -s build
+```
+
+## Author
 
 Jovana Matkovic
