@@ -2,7 +2,7 @@
 
 ## Description
 
-A small projects that demonstrates the usage of The Movie Database API.
+A small project that demonstrates the usage of The Movie Database API.
 
 ## Getting Started
 
