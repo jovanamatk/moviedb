@@ -34,7 +34,3 @@ or make a build
 npm run build
 npx serve -s build
 ```
-
-## Author
-
-Jovana Matkovic
