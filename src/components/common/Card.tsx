@@ -7,6 +7,10 @@ interface Props {
 }
 
 export const Card: React.FC<Props> = ({ data }) => {
+  /*
+    If passed data has a title property, it is certain that it is a movie. 
+    Otherwise, it has a name property and it is a TV Show.
+  */
   const route_name = data.title ? "movies" : "tv-shows";
   const image_url = "https://image.tmdb.org/t/p/original/";
 
@@ -22,7 +26,11 @@ export const Card: React.FC<Props> = ({ data }) => {
           }}
         >
           <LazyLoadImage
-            src={image_url + data["backdrop_path"]}
+            src={
+              data["backdrop_path"]
+                ? image_url + data["backdrop_path"]
+                : image_url + data["poster_path"]
+            }
             alt={data.name}
           />
         </Link>

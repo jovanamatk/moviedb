@@ -1,5 +1,7 @@
 import React from "react";
-import searchIcon from "../etc/search.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+
 interface Props {
   value?: string;
   onChange?: any | undefined;
@@ -8,7 +10,7 @@ interface Props {
 export const Search: React.FC<Props> = ({ value, onChange }) => {
   return (
     <div className="search">
-      <img alt="Search icon" className="search-icon" src={searchIcon} />
+      <FontAwesomeIcon className="search-icon" icon={faSearch} />
       <input
         className="search-input"
         placeholder="Search"

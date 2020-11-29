@@ -9,11 +9,9 @@ export const TvShows: React.FC<Props> = () => {
 
   return (
     <div className="grid-container">
-      {tvShows ? (
-        tvShows.map((movie) => <Card data={movie} key={movie["id"]} />)
-      ) : (
-        <h1>TV Show not found.</h1>
-      )}
+      {tvShows.map((movie) => (
+        <Card data={movie} key={movie["id"]} />
+      ))}
     </div>
   );
 };

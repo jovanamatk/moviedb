@@ -36,16 +36,16 @@
 .search .search-input {
   border: 1px solid grey;
   border-radius: 5px;
-  height: 20px;
+  height: 25px;
   width: 100%;
-  padding: 2px 23px 2px 30px;
+  padding: 3px 23px 2px 30px;
   outline: 0;
   background-color: #f5f5f5;
 }
 
 .search .search-icon {
   position: absolute;
-  top: 6px;
+  top: 8px;
   left: 8px;
   width: 14px;
 }
@@ -84,16 +84,14 @@
   }
 }
 
-button {
-  padding: 0 40px;
+.btn-primary {
+  display: inline-block;
+  padding: 15px 30px;
   border: 1px solid grey;
   border-radius: 5px;
   margin-bottom: 10px;
   cursor: pointer;
-}
-
-button :hover {
-  color: grey;
+  font-size: 18px;
 }
 
 .cover-img {

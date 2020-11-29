@@ -1,51 +1,61 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
 import { Switch, Route, Redirect } from "react-router-dom";
+import { useHistory, useLocation } from "react-router";
+import Axios from "axios";
 import { TvShows } from "./components/TvShows";
 import { Movies } from "./components/Movies";
 import { Navbar } from "./components/Navbar";
 import { Search } from "./components/Search";
-import Axios from "axios";
 import { Item } from "./components/common/Item";
-import { useHistory, useLocation } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faAngleLeft } from "@fortawesome/free-solid-svg-icons";
 
-interface Movies {
+interface MoviesInterface {
   title: string;
 }
-
-interface TvShows {
+interface TvShowsInterface {
   name: string;
 }
+
+/*
+  Movies and TV Shows arrays are located in the global state
+*/
 export const AppContext = React.createContext({
-  movies: [] as Movies[],
-  tvShows: [] as TvShows[],
+  movies: [] as MoviesInterface[],
+  tvShows: [] as TvShowsInterface[],
 });
 
 function App() {
-  const [movies, setMovies] = useState<Movies[]>([]);
-  const [tvShows, setTvShows] = useState<TvShows[]>([]);
+  /*
+    Local state definitions
+  */
+  const [movies, setMovies] = useState<MoviesInterface[]>([]);
+  const [tvShows, setTvShows] = useState<TvShowsInterface[]>([]);
   const [search, setSearch] = useState("");
   const [filteredMovies, setFilteredMovies] = useState<
-    Movies[] | TvShows[] | any
+    MoviesInterface[] | TvShowsInterface[] | any
   >([]);
   const [filteredTvShows, setFilteredTvShows] = useState<
-    Movies[] | TvShows[] | any
+    MoviesInterface[] | TvShowsInterface[] | any
   >([]);
 
+  // useEffect hooks help us send GET requests to the server and save the response data in the state
   useEffect(() => {
     Axios.get(
       "https://api.themoviedb.org/3/movie/popular?api_key=810f591d016b0a00f63dda22f0ca7d52"
     ).then((response) =>
-      setMovies(response.data.results.slice(0, 10) as Movies[])
+      setMovies(response.data.results.slice(0, 10) as MoviesInterface[])
     );
     Axios.get(
       "https://api.themoviedb.org/3/tv/popular?api_key=810f591d016b0a00f63dda22f0ca7d52"
     ).then((response) =>
-      setTvShows(response.data.results.slice(0, 10) as TvShows[])
+      setTvShows(response.data.results.slice(0, 10) as TvShowsInterface[])
     );
   }, []);
 
   useEffect(() => {
+    // If there are more than 3 characters, send the GET request
     if (search.length >= 3) {
       setTimeout(() => {
         Axios.get(
@@ -63,24 +73,17 @@ function App() {
       setFilteredMovies(movies);
       setFilteredTvShows(tvShows);
     }
-  }, [search]);
+  }, [search, movies, tvShows]);
 
+  // Saves the current search query to the state
   let handleSearch = (query: string) => {
     setSearch(query);
-  };
-
-  let getData = (search: string, data: any) => {
-    if (search && search.length >= 3) {
-    } else if (search.length < 3) {
-      if (data[0].title) return movies;
-
-      return tvShows;
-    }
   };
 
   const history = useHistory();
   const location = useLocation();
 
+  // If the user is viewing details page, header area will be hidden
   let hideHeader = () => {
     if (
       location.pathname.startsWith("/movies/") ||
@@ -99,9 +102,9 @@ function App() {
     >
       <div className="container">
         {hideHeader() ? (
-          <button onClick={() => history.goBack()}>
-            <h2>Back</h2>
-          </button>
+          <div className="btn-primary" onClick={() => history.goBack()}>
+            <FontAwesomeIcon icon={faAngleLeft} /> Back
+          </div>
         ) : (
           <>
             <Navbar /> <Search value={search} onChange={handleSearch} />

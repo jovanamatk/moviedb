@@ -14,7 +14,11 @@ export const Item: React.FC = () => {
       <div>
         <LazyLoadImage
           className="cover-img"
-          src={image_url + item.backdrop_path}
+          src={
+            item["backdrop_path"]
+              ? image_url + item["backdrop_path"]
+              : image_url + item["poster_path"]
+          }
           alt={data.name}
         />
 
