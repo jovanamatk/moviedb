@@ -53,18 +53,3 @@ export const Card: React.FC<Props> = ({ data }) => {
   );
 };
 
-/*
-
-TO DO LIST
-
-- Create movie/tv show pages and link them to the cards         -> DONE
-- Back button                                                   -> DONE
-- Put images from API into cards                                -> DONE
-- Make the search work                                          -> done, but needs improvements 
-- Complete styling the app                                      -> DONE (back button remaining)
-
-- Implement lazy loading                                        -> DONE
-- Write some comments
-- Write the documentation - README.md
-
-*/
